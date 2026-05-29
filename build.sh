@@ -16,12 +16,12 @@ chmod a+x bin/repo
 export PATH="$(realpath .)/bin:$PATH"
 cd android/lineage
 export PATH="$(realpath .)/prebuilts/sdk/tools/linux/bin/:$PATH"
-repo init -u https://github.com/LineageOS/android.git -b lineage-21.0 --git-lfs --no-clone-bundle
+repo init -u https://github.com/LineageOS/android.git -b lineage-22.0 --git-lfs --no-clone-bundle
 repo sync -j 8 # $(nproc)
 sed -i 's/-$(LINEAGE_BUILDTYPE)/-jqssun/g' vendor/lineage/config/version.mk
 
 source build/envsetup.sh
-export AB_OTA_UPDATER=false ROOMSERVICE_BRANCHES="lineage-21.0"
+export AB_OTA_UPDATER=false ROOMSERVICE_BRANCHES="lineage-22.0"
 breakfast virtio_arm64only
 echo "CONFIG_RTC_CLASS=y" >> kernel/virt/virtio/arch/arm64/configs/lineageos/virtio.config
 
